@@ -1,34 +1,444 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#8b5cf6" />
-    <meta
-      name="description"
-      content="Web-App zur Verwaltung des Kassenstands von Parkautomaten"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!-- Verknüpfung zur Web App Manifest-Datei -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>Parkautomat Kassenstand App</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parkautomat Kassenstand</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
     <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .coin-group {
+            transition: all 0.2s ease;
+        }
+        .coin-group:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
     </style>
-  </head>
-  <body>
-    <noscript>Sie müssen JavaScript aktivieren, um diese App auszuführen.</noscript>
-    <div id="root"></div>
-    <!-- 
-      Hinweis: Der folgende Skript-Tag ist ein Platzhalter.
-      Der Build-Prozess von react-scripts ersetzt ihn automatisch
-      durch den korrekten Pfad zu Ihrer gebündelten App.
-    -->
-    <script src="%PUBLIC_URL%/static/js/bundle.js"></script>
-  </body>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center p-4 font-inter">
+    <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-5xl">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6 md:mb-8">Parkautomat Kassenstand</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <!-- K11 Section -->
+            <div class="bg-blue-50 p-4 md:p-6 rounded-xl shadow-inner border border-blue-300 h-full">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center underline">K11</h2>
+                
+                <!-- 2 Euro Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        2 Euro Münzen (<span class="text-red-600 font-bold">Max: 380</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin2euro-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="120" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k11">€240,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="260" readonly id="refill2euro-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k11">€520,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="380" readonly id="new2euro-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value2euro-k11">€760,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 50 Cent Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        50 Cent Münzen (<span class="text-red-600 font-bold">Max: 400</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin50ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="200" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k11">€100,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill50ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k11">€100,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="400" readonly id="new50ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value50ct-k11">€200,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 20 Cent Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        20 Cent Münzen (<span class="text-red-600 font-bold">Max: 600</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin20ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="450" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value20ct-k11">€90,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="150" readonly id="refill20ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value20ct-k11">€30,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="600" readonly id="new20ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value20ct-k11">€120,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 10 Cent Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        10 Cent Münzen (<span class="text-red-600 font-bold">Max: 770</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin10ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="600" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k11">€60,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="170" readonly id="refill10ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k11">€17,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="770" readonly id="new10ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value10ct-k11">€77,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- K11 Gesamtsumme -->
+                <div class="mt-6 p-3 bg-blue-100 rounded-lg border border-blue-400">
+                    <h3 class="font-bold text-lg text-center mb-2">K11 Gesamtsumme</h3>
+                    <div class="grid grid-cols-3 gap-2 text-sm">
+                        <div class="text-center">
+                            <div>Aktuell:</div>
+                            <div class="font-bold" id="total-current-k11">€490,00</div>
+                        </div>
+                        <div class="text-center">
+                            <div>Nachfüllen:</div>
+                            <div class="font-bold" id="total-refill-k11">€667,00</div>
+                        </div>
+                        <div class="text-center">
+                            <div>Neuer Stand:</div>
+                            <div class="font-bold" id="total-new-k11">€1.157,00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- K12 Section -->
+            <div class="bg-purple-50 p-4 md:p-6 rounded-xl shadow-inner border border-purple-300 h-full">
+                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center underline">K12</h2>
+                
+                <!-- 2 Euro Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        2 Euro Münzen (<span class="text-red-600 font-bold">Max: 600</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin2euro-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="300" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k12">€600,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="300" readonly id="refill2euro-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k12">€600,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="600" readonly id="new2euro-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value2euro-k12">€1.200,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 50 Cent Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        50 Cent Münzen (<span class="text-red-600 font-bold">Max: 700</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin50ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="500" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k12">€250,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill50ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k12">€100,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="700" readonly id="new50ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value50ct-k12">€350,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 10 Cent Münzen -->
+                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                    <label class="block text-gray-700 text-sm font-medium mb-2">
+                        10 Cent Münzen (<span class="text-red-600 font-bold">Max: 1000</span> Stk.):
+                    </label>
+                    <div class="grid grid-cols-3 gap-x-2">
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
+                            <input type="number" id="coin10ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="800" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k12">€80,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill10ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k12">€20,00</div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-lime-400 text-gray-800 font-bold focus:outline-none text-xs text-center" value="1000" readonly id="new10ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="new-value10ct-k12">€100,00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- K12 Gesamtsumme -->
+                <div class="mt-6 p-3 bg-purple-100 rounded-lg border border-purple-400">
+                    <h3 class="font-bold text-lg text-center mb-2">K12 Gesamtsumme</h3>
+                    <div class="grid grid-cols-3 gap-2 text-sm">
+                        <div class="text-center">
+                            <div>Aktuell:</div>
+                            <div class="font-bold" id="total-current-k12">€930,00</div>
+                        </div>
+                        <div class="text-center">
+                            <div>Nachfüllen:</div>
+                            <div class="font-bold" id="total-refill-k12">€720,00</div>
+                        </div>
+                        <div class="text-center">
+                            <div>Neuer Stand:</div>
+                            <div class="font-bold" id="total-new-k12">€1.650,00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grand Total -->
+        <div class="mt-6 p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg">
+            <h2 class="text-xl md:text-2xl font-bold text-center text-white mb-3">Gesamtsumme beider Automaten</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
+                <div class="text-center p-3 bg-blue-600 rounded-lg">
+                    <div class="text-lg">Aktueller Gesamtstand</div>
+                    <div class="text-xl md:text-2xl font-bold" id="grand-total-current">€1.420,00</div>
+                </div>
+                <div class="text-center p-3 bg-yellow-600 rounded-lg">
+                    <div class="text-lg">Gesamt nachfüllen</div>
+                    <div class="text-xl md:text-2xl font-bold" id="grand-total-refill">€1.387,00</div>
+                </div>
+                <div class="text-center p-3 bg-green-600 rounded-lg">
+                    <div class="text-lg">Neuer Gesamtstand</div>
+                    <div class="text-xl md:text-2xl font-bold" id="grand-total-new">€2.807,00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Coin values in Euros
+        const coinValues = {
+            '10ct': 0.10,
+            '20ct': 0.20,
+            '50ct': 0.50,
+            '2Euro': 2.00,
+        };
+
+        // Max capacities for each machine type
+        const maxCapacities = {
+            K11: {
+                '10ct': 770,
+                '20ct': 600,
+                '50ct': 400,
+                '2Euro': 380,
+            },
+            K12: {
+                '10ct': 1000,
+                '50ct': 700,
+                '2Euro': 600,
+            },
+        };
+
+        // Format number as Euro currency
+        function formatEuro(amount) {
+            return new Intl.NumberFormat('de-DE', { 
+                style: 'currency', 
+                currency: 'EUR',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2 
+            }).format(amount);
+        }
+
+        // Calculate refill value
+        function getRefillNumericValue(currentCoinAmount, maxCapacityCoin, coinType) {
+            if (currentCoinAmount === '') {
+                return '';
+            }
+
+            const parsedCurrent = parseFloat(currentCoinAmount || 0);
+
+            if (parsedCurrent >= maxCapacityCoin) {
+                return 0;
+            } else {
+                const needed = maxCapacityCoin - parsedCurrent;
+                let roundedNeeded;
+
+                const roundingStep = (coinType === '50ct' || coinType === '2Euro') ? 50 : 100;
+                roundedNeeded = Math.round(needed / roundingStep) * roundingStep;
+
+                if (roundedNeeded > needed && needed > 0) {
+                    roundedNeeded = Math.floor(needed / roundingStep) * roundingStep;
+                }
+                
+                return Math.max(0, roundedNeeded);
+            }
+        }
+
+        // Update all calculations
+        function updateCalculations() {
+            // K11 calculations
+            const coinsK11 = [
+                { id: '2euro', element: document.getElementById('coin2euro-k11'), max: maxCapacities.K11['2Euro'] },
+                { id: '50ct', element: document.getElementById('coin50ct-k11'), max: maxCapacities.K11['50ct'] },
+                { id: '20ct', element: document.getElementById('coin20ct-k11'), max: maxCapacities.K11['20ct'] },
+                { id: '10ct', element: document.getElementById('coin10ct-k11'), max: maxCapacities.K11['10ct'] }
+            ];
+
+            let totalCurrentK11 = 0;
+            let totalRefillK11 = 0;
+
+            coinsK11.forEach(coin => {
+                const value = coin.element.value;
+                const refillValue = getRefillNumericValue(value, coin.max, coin.id);
+                const newValue = value === '' ? '' : (parseFloat(value || 0) + parseFloat(refillValue || 0));
+                
+                // Update refill and new value fields
+                document.getElementById(`refill${coin.id}-k11`).value = refillValue;
+                document.getElementById(`new${coin.id}-k11`).value = newValue;
+                
+                // Update Euro values
+                const currentValueEuro = value === '' ? 0 : parseFloat(value || 0) * coinValues[coin.id === '2euro' ? '2Euro' : coin.id];
+                const refillValueEuro = refillValue === '' ? 0 : parseFloat(refillValue || 0) * coinValues[coin.id === '2euro' ? '2Euro' : coin.id];
+                const newValueEuro = currentValueEuro + refillValueEuro;
+                
+                document.getElementById(`value${coin.id}-k11`).textContent = formatEuro(currentValueEuro);
+                document.getElementById(`refill-value${coin.id}-k11`).textContent = formatEuro(refillValueEuro);
+                document.getElementById(`new-value${coin.id}-k11`).textContent = formatEuro(newValueEuro);
+                
+                // Add to totals
+                totalCurrentK11 += currentValueEuro;
+                totalRefillK11 += refillValueEuro;
+            });
+            
+            const totalNewK11 = totalCurrentK11 + totalRefillK11;
+            
+            // Update K11 totals
+            document.getElementById('total-current-k11').textContent = formatEuro(totalCurrentK11);
+            document.getElementById('total-refill-k11').textContent = formatEuro(totalRefillK11);
+            document.getElementById('total-new-k11').textContent = formatEuro(totalNewK11);
+
+            // K12 calculations
+            const coinsK12 = [
+                { id: '2euro', element: document.getElementById('coin2euro-k12'), max: maxCapacities.K12['2Euro'] },
+                { id: '50ct', element: document.getElementById('coin50ct-k12'), max: maxCapacities.K12['50ct'] },
+                { id: '10ct', element: document.getElementById('coin10ct-k12'), max: maxCapacities.K12['10ct'] }
+            ];
+
+            let totalCurrentK12 = 0;
+            let totalRefillK12 = 0;
+
+            coinsK12.forEach(coin => {
+                const value = coin.element.value;
+                const refillValue = getRefillNumericValue(value, coin.max, coin.id);
+                const newValue = value === '' ? '' : (parseFloat(value || 0) + parseFloat(refillValue || 0));
+                
+                // Update refill and new value fields
+                document.getElementById(`refill${coin.id}-k12`).value = refillValue;
+                document.getElementById(`new${coin.id}-k12`).value = newValue;
+                
+                // Update Euro values
+                const currentValueEuro = value === '' ? 0 : parseFloat(value || 0) * coinValues[coin.id === '2euro' ? '2Euro' : coin.id];
+                const refillValueEuro = refillValue === '' ? 0 : parseFloat(refillValue || 0) * coinValues[coin.id === '2euro' ? '2Euro' : coin.id];
+                const newValueEuro = currentValueEuro + refillValueEuro;
+                
+                document.getElementById(`value${coin.id}-k12`).textContent = formatEuro(currentValueEuro);
+                document.getElementById(`refill-value${coin.id}-k12`).textContent = formatEuro(refillValueEuro);
+                document.getElementById(`new-value${coin.id}-k12`).textContent = formatEuro(newValueEuro);
+                
+                // Add to totals
+                totalCurrentK12 += currentValueEuro;
+                totalRefillK12 += refillValueEuro;
+            });
+            
+            const totalNewK12 = totalCurrentK12 + totalRefillK12;
+            
+            // Update K12 totals
+            document.getElementById('total-current-k12').textContent = formatEuro(totalCurrentK12);
+            document.getElementById('total-refill-k12').textContent = formatEuro(totalRefillK12);
+            document.getElementById('total-new-k12').textContent = formatEuro(totalNewK12);
+
+            // Update grand totals
+            const grandTotalCurrent = totalCurrentK11 + totalCurrentK12;
+            const grandTotalRefill = totalRefillK11 + totalRefillK12;
+            const grandTotalNew = grandTotalCurrent + grandTotalRefill;
+            
+            document.getElementById('grand-total-current').textContent = formatEuro(grandTotalCurrent);
+            document.getElementById('grand-total-refill').textContent = formatEuro(grandTotalRefill);
+            document.getElementById('grand-total-new').textContent = formatEuro(grandTotalNew);
+        }
+
+        // Add event listeners to all input fields
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', updateCalculations);
+        });
+
+        // Initialize calculations
+        updateCalculations();
+    </script>
+</body>
 </html>
