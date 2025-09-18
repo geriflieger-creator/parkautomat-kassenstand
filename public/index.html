@@ -1,22 +1,34 @@
 <!DOCTYPE html>
 <html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Parkautomat Kassenstand</title>
-    <!-- Lädt Tailwind CSS direkt über ein CDN für die Stile -->
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <meta
+      name="description"
+      content="Web-App zur Verwaltung des Kassenstands von Parkautomaten"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!-- Verknüpfung zur Web App Manifest-Datei -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Parkautomat Kassenstand App</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-      /* Stellt sicher, dass die Schriftart "Inter" verwendet wird */
       body {
-        font-family: "Inter", sans-serif;
+        font-family: 'Inter', sans-serif;
       }
     </style>
   </head>
   <body>
-    <!-- Das Element, in das die React-App geladen wird -->
+    <noscript>Sie müssen JavaScript aktivieren, um diese App auszuführen.</noscript>
     <div id="root"></div>
-    <!-- Lädt die React-App -->
-    <script type="module" src="./src/App.jsx"></script>
+    <!-- 
+      Hinweis: Der folgende Skript-Tag ist ein Platzhalter.
+      Der Build-Prozess von react-scripts ersetzt ihn automatisch
+      durch den korrekten Pfad zu Ihrer gebündelten App.
+    -->
+    <script src="%PUBLIC_URL%/static/js/bundle.js"></script>
   </body>
 </html>
