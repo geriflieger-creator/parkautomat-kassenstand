@@ -6,20 +6,15 @@
     <title>Parkautomat Kassenstand</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        inter: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
         input[type="number"]::-webkit-outer-spin-button,
         input[type="number"]::-webkit-inner-spin-button {
@@ -31,16 +26,26 @@
         }
         .coin-group {
             transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
         .coin-group:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header-gradient {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+        .total-box {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center p-4 font-inter">
+<body>
     <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-5xl">
-        <h1 class="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6 md:mb-8">Parkautomat Kassenstand</h1>
+        <div class="header-gradient text-white p-4 rounded-xl mb-6 text-center">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">Parkautomat Kassenstand</h1>
+            <p class="text-blue-100">Verwalten Sie die Münzbestände Ihrer Parkautomaten</p>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <!-- K11 Section -->
@@ -55,13 +60,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin2euro-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="120" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k11">€240,00</div>
+                            <input type="number" id="coin2euro-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k11">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="260" readonly id="refill2euro-k11">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k11">€520,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="380" readonly id="refill2euro-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k11">€760,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -79,13 +84,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin50ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="200" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k11">€100,00</div>
+                            <input type="number" id="coin50ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k11">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill50ct-k11">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k11">€100,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="400" readonly id="refill50ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k11">€200,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -103,13 +108,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin20ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="450" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value20ct-k11">€90,00</div>
+                            <input type="number" id="coin20ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value20ct-k11">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="150" readonly id="refill20ct-k11">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value20ct-k11">€30,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="600" readonly id="refill20ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value20ct-k11">€120,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -127,13 +132,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin10ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="600" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k11">€60,00</div>
+                            <input type="number" id="coin10ct-k11" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k11">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="170" readonly id="refill10ct-k11">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k11">€17,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="770" readonly id="refill10ct-k11">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k11">€77,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -144,16 +149,16 @@
                 </div>
                 
                 <!-- K11 Gesamtsumme -->
-                <div class="mt-6 p-3 bg-blue-100 rounded-lg border border-blue-400">
+                <div class="mt-6 p-3 bg-blue-100 rounded-lg border border-blue-400 total-box">
                     <h3 class="font-bold text-lg text-center mb-2">K11 Gesamtsumme</h3>
                     <div class="grid grid-cols-3 gap-2 text-sm">
                         <div class="text-center">
                             <div>Aktuell:</div>
-                            <div class="font-bold" id="total-current-k11">€490,00</div>
+                            <div class="font-bold" id="total-current-k11">€0,00</div>
                         </div>
                         <div class="text-center">
                             <div>Nachfüllen:</div>
-                            <div class="font-bold" id="total-refill-k11">€667,00</div>
+                            <div class="font-bold" id="total-refill-k11">€1.157,00</div>
                         </div>
                         <div class="text-center">
                             <div>Neuer Stand:</div>
@@ -175,13 +180,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin2euro-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="300" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k12">€600,00</div>
+                            <input type="number" id="coin2euro-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value2euro-k12">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="300" readonly id="refill2euro-k12">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k12">€600,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="600" readonly id="refill2euro-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value2euro-k12">€1.200,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -199,13 +204,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin50ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="500" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k12">€250,00</div>
+                            <input type="number" id="coin50ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value50ct-k12">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill50ct-k12">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k12">€100,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="700" readonly id="refill50ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value50ct-k12">€350,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -223,13 +228,13 @@
                     <div class="grid grid-cols-3 gap-x-2">
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Aktuell:</label>
-                            <input type="number" id="coin10ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="800" min="0">
-                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k12">€80,00</div>
+                            <input type="number" id="coin10ct-k12" class="w-20 px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 text-xs text-center" placeholder="Stk." value="0" min="0">
+                            <div class="text-xs mt-1 text-gray-600" id="value10ct-k12">€0,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Nachfüllen:</label>
-                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="200" readonly id="refill10ct-k12">
-                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k12">€20,00</div>
+                            <input type="text" class="w-20 px-2 py-1 border border-gray-300 rounded-lg bg-yellow-100 text-gray-600 font-bold italic focus:outline-none text-xs text-center" value="1000" readonly id="refill10ct-k12">
+                            <div class="text-xs mt-1 text-gray-600" id="refill-value10ct-k12">€100,00</div>
                         </div>
                         <div>
                             <label class="block text-gray-700 text-xs mb-1">Neuer Stand:</label>
@@ -240,16 +245,16 @@
                 </div>
                 
                 <!-- K12 Gesamtsumme -->
-                <div class="mt-6 p-3 bg-purple-100 rounded-lg border border-purple-400">
+                <div class="mt-6 p-3 bg-purple-100 rounded-lg border border-purple-400 total-box">
                     <h3 class="font-bold text-lg text-center mb-2">K12 Gesamtsumme</h3>
                     <div class="grid grid-cols-3 gap-2 text-sm">
                         <div class="text-center">
                             <div>Aktuell:</div>
-                            <div class="font-bold" id="total-current-k12">€930,00</div>
+                            <div class="font-bold" id="total-current-k12">€0,00</div>
                         </div>
                         <div class="text-center">
                             <div>Nachfüllen:</div>
-                            <div class="font-bold" id="total-refill-k12">€720,00</div>
+                            <div class="font-bold" id="total-refill-k12">€1.650,00</div>
                         </div>
                         <div class="text-center">
                             <div>Neuer Stand:</div>
@@ -261,22 +266,27 @@
         </div>
         
         <!-- Grand Total -->
-        <div class="mt-6 p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg">
-            <h2 class="text-xl md:text-2xl font-bold text-center text-white mb-3">Gesamtsumme beider Automaten</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
+        <div class="mt-6 p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg text-white">
+            <h2 class="text-xl md:text-2xl font-bold text-center mb-3">Gesamtsumme beider Automaten</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="text-center p-3 bg-blue-600 rounded-lg">
                     <div class="text-lg">Aktueller Gesamtstand</div>
-                    <div class="text-xl md:text-2xl font-bold" id="grand-total-current">€1.420,00</div>
+                    <div class="text-xl md:text-2xl font-bold" id="grand-total-current">€0,00</div>
                 </div>
                 <div class="text-center p-3 bg-yellow-600 rounded-lg">
                     <div class="text-lg">Gesamt nachfüllen</div>
-                    <div class="text-xl md:text-2xl font-bold" id="grand-total-refill">€1.387,00</div>
+                    <div class="text-xl md:text-2xl font-bold" id="grand-total-refill">€2.807,00</div>
                 </div>
                 <div class="text-center p-3 bg-green-600 rounded-lg">
                     <div class="text-lg">Neuer Gesamtstand</div>
                     <div class="text-xl md:text-2xl font-bold" id="grand-total-new">€2.807,00</div>
                 </div>
             </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="mt-6 text-center text-gray-600 text-sm">
+            <p>Geben Sie die aktuellen Münzbestände ein, um die Nachfüllmengen zu berechnen</p>
         </div>
     </div>
 
