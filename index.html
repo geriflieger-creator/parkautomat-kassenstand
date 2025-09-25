@@ -53,7 +53,7 @@
             <p class="text-blue-100">Verwalten Sie die Münzbestände Ihrer Parkautomaten</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- K11 Section mit blauem Hintergrund -->
             <div class="k11-bg p-4 md:p-6 rounded-xl shadow-inner border border-blue-300 h-full">
                 <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center underline">K11</h2>
@@ -277,25 +277,6 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Grand Total -->
-        <div class="mt-6 p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl shadow-lg text-white">
-            <h2 class="text-xl md:text-2xl font-bold text-center mb-3">Gesamtsumme beider Automaten</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="text-center p-3 bg-blue-600 rounded-lg">
-                    <div class="text-lg">Aktueller Gesamtstand</div>
-                    <div class="text-xl md:text-2xl font-bold" id="grand-total-current">€0,00</div>
-                </div>
-                <div class="text-center p-3 bg-yellow-600 rounded-lg">
-                    <div class="text-lg">Gesamt nachfüllen</div>
-                    <div class="text-xl md:text-2xl font-bold" id="grand-total-refill">€2.620,00</div>
-                </div>
-                <div class="text-center p-3 bg-green-600 rounded-lg">
-                    <div class="text-lg">Neuer Gesamtstand</div>
-                    <div class="text-xl md:text-2xl font-bold" id="grand-total-new">€2.620,00</div>
-                </div>
-            </div>
-        </div>
 
         <!-- Info Section -->
         <div class="mt-6 text-center text-gray-600 text-sm">
@@ -457,15 +438,6 @@
             document.getElementById('total-current-k12').textContent = formatEuro(totalCurrentK12);
             document.getElementById('total-refill-k12').textContent = formatEuro(totalRefillK12);
             document.getElementById('total-new-k12').textContent = formatEuro(totalNewK12);
-
-            // Update grand totals
-            const grandTotalCurrent = totalCurrentK11 + totalCurrentK12;
-            const grandTotalRefill = totalRefillK11 + totalRefillK12;
-            const grandTotalNew = grandTotalCurrent + grandTotalRefill;
-            
-            document.getElementById('grand-total-current').textContent = formatEuro(grandTotalCurrent);
-            document.getElementById('grand-total-refill').textContent = formatEuro(grandTotalRefill);
-            document.getElementById('grand-total-new').textContent = formatEuro(grandTotalNew);
         }
 
         // Add event listeners to all input fields
