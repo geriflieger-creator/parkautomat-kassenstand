@@ -27,6 +27,7 @@
         .coin-group {
             transition: all 0.2s ease;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border: 2px solid #000 !important;
         }
         .coin-group:hover {
             transform: translateY(-2px);
@@ -34,9 +35,6 @@
         }
         .header-gradient {
             background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
-        .total-box {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         .k11-bg {
             background-color: #dbeafe; /* Hellblau */
@@ -49,17 +47,17 @@
 <body>
     <div class="bg-white p-6 md:p-8 rounded-2xl shadow-xl w-full max-w-5xl">
         <div class="header-gradient text-white p-4 rounded-xl mb-6 text-center">
-            <h1 class="text-2xl md:text-3xl font-bold mb-2">Parkautomat Kassenstand</h1>
-            <p class="text-blue-100">Verwalten Sie die Münzbestände Ihrer Parkautomaten</p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Parkautomat Kassenstand</h1>
+            <p class="text-blue-100 text-lg">Verwalten Sie die Münzbestände Ihrer Parkautomaten</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- K11 Section mit blauem Hintergrund -->
             <div class="k11-bg p-4 md:p-6 rounded-xl shadow-inner border border-blue-300 h-full">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center underline">K11</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center underline">K11</h2>
                 
                 <!-- 50 Cent Münzen (jetzt oben) -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         50 Cent Münzen (<span class="text-red-600 font-bold">Max: 400</span> Stk.):
                     </label>
@@ -84,7 +82,7 @@
                 </div>
                 
                 <!-- 20 Cent Münzen -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         20 Cent Münzen (<span class="text-red-600 font-bold">Max: 500</span> Stk.):
                     </label>
@@ -109,7 +107,7 @@
                 </div>
                 
                 <!-- 2 Euro Münzen -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         2 Euro Münzen (<span class="text-red-600 font-bold">Max: 380</span> Stk.):
                     </label>
@@ -134,7 +132,7 @@
                 </div>
                 
                 <!-- 10 Cent Münzen (jetzt unten) -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         10 Cent Münzen (<span class="text-red-600 font-bold">Max: 770</span> Stk.):
                     </label>
@@ -157,33 +155,14 @@
                     </div>
                     <div class="text-xs text-gray-500 mt-1 text-center">Nachfüllschritt: 100 Stk.</div>
                 </div>
-                
-                <!-- K11 Gesamtsumme -->
-                <div class="mt-6 p-3 bg-blue-100 rounded-lg border border-blue-400 total-box">
-                    <h3 class="font-bold text-lg text-center mb-2">K11 Gesamtsumme</h3>
-                    <div class="grid grid-cols-3 gap-2 text-sm">
-                        <div class="text-center">
-                            <div>Aktuell:</div>
-                            <div class="font-bold" id="total-current-k11">€0,00</div>
-                        </div>
-                        <div class="text-center">
-                            <div>Nachfüllen:</div>
-                            <div class="font-bold" id="total-refill-k11">€1.070,00</div>
-                        </div>
-                        <div class="text-center">
-                            <div>Neuer Stand:</div>
-                            <div class="font-bold" id="total-new-k11">€1.070,00</div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- K12 Section mit lila Hintergrund -->
             <div class="k12-bg p-4 md:p-6 rounded-xl shadow-inner border border-purple-300 h-full">
-                <h2 class="text-xl md:text-2xl font-semibold text-gray-700 mb-4 text-center underline">K12</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center underline">K12</h2>
                 
                 <!-- 10 Cent Münzen (jetzt oben) -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         10 Cent Münzen (<span class="text-red-600 font-bold">Max: 1000</span> Stk.):
                     </label>
@@ -208,7 +187,7 @@
                 </div>
                 
                 <!-- 50 Cent Münzen -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         50 Cent Münzen (<span class="text-red-600 font-bold">Max: 500</span> Stk.):
                     </label>
@@ -233,7 +212,7 @@
                 </div>
                 
                 <!-- 2 Euro Münzen (jetzt unten) -->
-                <div class="mb-4 p-3 bg-white rounded-lg border border-gray-200 coin-group">
+                <div class="mb-4 p-3 bg-white rounded-lg coin-group">
                     <label class="block text-gray-700 text-sm font-medium mb-2">
                         2 Euro Münzen (<span class="text-red-600 font-bold">Max: 600</span> Stk.):
                     </label>
@@ -255,25 +234,6 @@
                         </div>
                     </div>
                     <div class="text-xs text-gray-500 mt-1 text-center">Nachfüllschritt: 50 Stk.</div>
-                </div>
-                
-                <!-- K12 Gesamtsumme -->
-                <div class="mt-6 p-3 bg-purple-100 rounded-lg border border-purple-400 total-box">
-                    <h3 class="font-bold text-lg text-center mb-2">K12 Gesamtsumme</h3>
-                    <div class="grid grid-cols-3 gap-2 text-sm">
-                        <div class="text-center">
-                            <div>Aktuell:</div>
-                            <div class="font-bold" id="total-current-k12">€0,00</div>
-                        </div>
-                        <div class="text-center">
-                            <div>Nachfüllen:</div>
-                            <div class="font-bold" id="total-refill-k12">€1.550,00</div>
-                        </div>
-                        <div class="text-center">
-                            <div>Neuer Stand:</div>
-                            <div class="font-bold" id="total-new-k12">€1.550,00</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -366,9 +326,6 @@
                 { id: '10ct', element: document.getElementById('coin10ct-k11'), max: maxCapacities.K11['10ct'] }
             ];
 
-            let totalCurrentK11 = 0;
-            let totalRefillK11 = 0;
-
             coinsK11.forEach(coin => {
                 const value = coin.element.value;
                 const refillValue = getRefillNumericValue(value, coin.max, coin.id);
@@ -386,18 +343,7 @@
                 document.getElementById(`value${coin.id}-k11`).textContent = formatEuro(currentValueEuro);
                 document.getElementById(`refill-value${coin.id}-k11`).textContent = formatEuro(refillValueEuro);
                 document.getElementById(`new-value${coin.id}-k11`).textContent = formatEuro(newValueEuro);
-                
-                // Add to totals
-                totalCurrentK11 += currentValueEuro;
-                totalRefillK11 += refillValueEuro;
             });
-            
-            const totalNewK11 = totalCurrentK11 + totalRefillK11;
-            
-            // Update K11 totals
-            document.getElementById('total-current-k11').textContent = formatEuro(totalCurrentK11);
-            document.getElementById('total-refill-k11').textContent = formatEuro(totalRefillK11);
-            document.getElementById('total-new-k11').textContent = formatEuro(totalNewK11);
 
             // K12 calculations
             const coinsK12 = [
@@ -405,9 +351,6 @@
                 { id: '50ct', element: document.getElementById('coin50ct-k12'), max: maxCapacities.K12['50ct'] },
                 { id: '2euro', element: document.getElementById('coin2euro-k12'), max: maxCapacities.K12['2euro'] }
             ];
-
-            let totalCurrentK12 = 0;
-            let totalRefillK12 = 0;
 
             coinsK12.forEach(coin => {
                 const value = coin.element.value;
@@ -426,18 +369,7 @@
                 document.getElementById(`value${coin.id}-k12`).textContent = formatEuro(currentValueEuro);
                 document.getElementById(`refill-value${coin.id}-k12`).textContent = formatEuro(refillValueEuro);
                 document.getElementById(`new-value${coin.id}-k12`).textContent = formatEuro(newValueEuro);
-                
-                // Add to totals
-                totalCurrentK12 += currentValueEuro;
-                totalRefillK12 += refillValueEuro;
             });
-            
-            const totalNewK12 = totalCurrentK12 + totalRefillK12;
-            
-            // Update K12 totals
-            document.getElementById('total-current-k12').textContent = formatEuro(totalCurrentK12);
-            document.getElementById('total-refill-k12').textContent = formatEuro(totalRefillK12);
-            document.getElementById('total-new-k12').textContent = formatEuro(totalNewK12);
         }
 
         // Add event listeners to all input fields
